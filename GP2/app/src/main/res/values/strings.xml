@@ -5,4 +5,5 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Go</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="spinner_title">Locations</string>
 </resources>
