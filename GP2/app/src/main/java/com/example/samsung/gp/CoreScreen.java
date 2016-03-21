@@ -8,6 +8,7 @@ public class CoreScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("");
         setContentView(R.layout.activity_core_screen);
     }
 }
