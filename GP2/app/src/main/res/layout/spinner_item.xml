@@ -9,9 +9,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:gravity="left"
-        android:textColor="#008080"
+        android:textColor="#666666"
         android:padding="5dip"
-
 
         />
 

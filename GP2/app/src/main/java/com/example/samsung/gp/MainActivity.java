@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         Email=(EditText) findViewById(R.id.txtemail);
         Password=(EditText) findViewById(R.id.txtpassword);
         ConfirmPassword=(EditText) findViewById(R.id.txtpassword2);
-        StartButton=(Button) findViewById(R.id.startbutton);
+        StartButton=(Button)findViewById(R.id.startbutton);
 
         ArrayAdapter<String> adapter;
         ArrayList<String> list = new ArrayList<String>();
