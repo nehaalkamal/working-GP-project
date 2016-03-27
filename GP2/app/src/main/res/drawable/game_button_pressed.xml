@@ -3,9 +3,9 @@
 xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="true"
-        android:drawable="@drawable/game_pressed" /> <!-- focused -->
+        android:drawable="@mipmap/game_pressed" /> <!-- focused -->
 
-    <item android:drawable="@drawable/game" /> <!-- default -->
+    <item android:drawable="@mipmap/game" /> <!-- default -->
 
 </selector>
 

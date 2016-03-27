@@ -12,5 +12,7 @@
     <string name="activities_question">What would you like to do ?</string>
     <string name="areaText">Area</string>
     <string name="YallaButton">"   Yalla bena!  "</string>
+    <string name="title_activity_core_screen">core_screen</string>
+    <string name="title_activity_login_activityy">LoginActivityy</string>
 
 </resources>

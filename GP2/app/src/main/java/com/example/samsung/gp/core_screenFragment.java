@@ -1,8 +1,10 @@
 package com.example.samsung.gp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,7 +12,11 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class CoreScreen extends AppCompatActivity {
+/**
+ * A placeholder fragment containing a simple view.
+ */
+public class core_screenFragment extends Fragment {
+
 
     private Spinner AreaList;
     private ImageButton foodButton;
@@ -20,19 +26,18 @@ public class CoreScreen extends AppCompatActivity {
     private ImageButton ahwaButton;
     private ImageButton concertsButton;
     private Button  yallaButton ;
+    public core_screenFragment() {
+    }
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        this.setTitle("Nokhrog Fen");
-
-
-        setContentView(R.layout.activity_core_screen);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_core_screen, container, false);
 
 
-        AreaList = (Spinner) findViewById(R.id.AreaSpinner);
+        AreaList = (Spinner)rootView.findViewById(R.id.AreaSpinner);
         ArrayAdapter<String> adapter;
         ArrayList<String> amakenList = new ArrayList<String>();
         amakenList.add("Maadi");
@@ -40,18 +45,17 @@ public class CoreScreen extends AppCompatActivity {
         amakenList.add("Shoubra");
         amakenList.add("Helwan");
         amakenList.add("Heliopolis");
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,
-                R.id.txtSpinner_item,amakenList);
+        adapter = new ArrayAdapter<String>(getActivity(),R.layout.spinner_item,R.id.txtSpinner_item,amakenList);
         adapter.setDropDownViewResource(R.layout.spinner_item);
         AreaList.setAdapter(adapter);
 
-        foodButton=(ImageButton)findViewById(R.id.food);
-        cafeButton=(ImageButton)findViewById(R.id.cafe);
-        entertainmentButton=(ImageButton)findViewById(R.id.game);
-        cinemaButton=(ImageButton)findViewById(R.id.cinema);
-        ahwaButton=(ImageButton)findViewById(R.id.ahwa);
-        concertsButton=(ImageButton)findViewById(R.id.concert);
-        yallaButton=(Button)findViewById(R.id.YallaButton);
+        foodButton=(ImageButton)rootView.findViewById(R.id.food);
+        cafeButton=(ImageButton)rootView.findViewById(R.id.cafe);
+        entertainmentButton=(ImageButton)rootView.findViewById(R.id.game);
+        cinemaButton=(ImageButton)rootView.findViewById(R.id.cinema);
+        ahwaButton=(ImageButton)rootView.findViewById(R.id.ahwa);
+        concertsButton=(ImageButton)rootView.findViewById(R.id.concert);
+        yallaButton=(Button)rootView.findViewById(R.id.YallaButton);
 
 
         foodButton.setOnClickListener(new View.OnClickListener() {
@@ -76,14 +80,14 @@ public class CoreScreen extends AppCompatActivity {
 
             }
         });
-       cinemaButton.setOnClickListener(new View.OnClickListener() {
+        cinemaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.setSelected(true);
 
             }
         });
-       ahwaButton.setOnClickListener(new View.OnClickListener() {
+        ahwaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.setSelected(true);
@@ -103,7 +107,8 @@ public class CoreScreen extends AppCompatActivity {
             }
         });
 
-
+        return rootView;
     }
+
 
 }

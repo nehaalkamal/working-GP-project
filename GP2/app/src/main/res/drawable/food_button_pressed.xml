@@ -3,9 +3,9 @@
 xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="true"
-        android:drawable="@drawable/food_pressed" /> <!-- focused -->
+        android:drawable="@mipmap/food_pressed" /> <!-- focused -->
 
-    <item android:drawable="@drawable/food" /> <!-- default -->
+    <item android:drawable="@mipmap/food" /> <!-- default -->
 
 </selector>
 

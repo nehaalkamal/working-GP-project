@@ -3,9 +3,9 @@
 xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="true"
-        android:drawable="@drawable/concert_pressed" /> <!-- focused -->
+        android:drawable="@mipmap/concert_pressed" /> <!-- focused -->
 
-    <item android:drawable="@drawable/concert" /> <!-- default -->
+    <item android:drawable="@mipmap/concert" /> <!-- default -->
 
 </selector>
 

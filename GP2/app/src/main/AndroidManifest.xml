@@ -19,11 +19,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".core_screen"
+            android:label="@string/title_activity_core_screen"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".CoreScreen">
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login_activityy"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
