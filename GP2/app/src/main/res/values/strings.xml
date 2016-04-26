@@ -14,5 +14,10 @@
     <string name="YallaButton">"   Yalla bena!  "</string>
     <string name="title_activity_core_screen">core_screen</string>
     <string name="title_activity_login_activityy">LoginActivityy</string>
+    <string name="title_activity_khrogat_packages">KhrogatPackages</string>
+    <string name="btnFavText">favourite</string>
+    <string name="btn_text_unfavourite">unfavourite</string>
+    <string name="title_activity_khroga_listing">KhrogaListing</string>
+    <string name="title_activity_item_details">item_details</string>
 
 </resources>

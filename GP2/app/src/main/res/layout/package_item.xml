@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
+
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="8dp"
+        android:foreground="?android:selectableItemBackground">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <ImageView
+                android:layout_below="@+id/imgFavourite"
+                android:id="@+id/imgMix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:src="@android:mipmap/sym_def_app_icon"
+                />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgMix"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:textSize="30sp"
+                android:textColor="@color/colorAccent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/currency"
+                android:textSize="12sp"
+                android:text="EGP"
+                android:layout_below="@id/imgMix"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/txtPrice"
+
+                android:textColor="@color/colorAccent"
+                />
+
+            <View
+                android:id="@+id/viewHL"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/ratingBar"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewHL"
+                android:singleLine="false"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                 />
+
+           <CheckBox
+                android:id="@+id/imgFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+               android:layout_marginTop="3dp"
+               android:button="@drawable/heart_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/txtPrice"
+                android:textSize="15sp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/star"
+                android:layout_toRightOf="@id/ratingBar"
+                android:layout_below="@id/txtPrice"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_vertical"
+                android:src="@drawable/star_on"/>
+
+            <!--<RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="4"
+                android:stepSize="1"
+                android:isIndicator="true"
+                android:clickable="false"
+                android:layout_gravity="center_vertical"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:layout_below="@+id/txtPrice"
+                android:layout_centerHorizontal="true" />-->
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

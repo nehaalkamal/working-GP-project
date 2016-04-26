@@ -226,5 +226,6 @@ android:textAlignment="center">
     android:typeface="normal"
     android:textStyle="bold"
     android:singleLine="true"
+
     android:background="@drawable/rounded_yalla_button"/>
 </LinearLayout>

@@ -1,12 +1,14 @@
 package com.example.samsung.gp;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
@@ -19,6 +21,7 @@ public class core_screenFragment extends Fragment {
 
 
     private Spinner AreaList;
+    private EditText budget;
     private ImageButton foodButton;
     private ImageButton cafeButton;
     private ImageButton cinemaButton;
@@ -37,9 +40,11 @@ public class core_screenFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_core_screen, container, false);
 
 
+
+
         AreaList = (Spinner)rootView.findViewById(R.id.AreaSpinner);
         ArrayAdapter<String> adapter;
-        ArrayList<String> amakenList = new ArrayList<String>();
+        final ArrayList<String> amakenList = new ArrayList<String>();
         amakenList.add("Maadi");
         amakenList.add("Nasr City");
         amakenList.add("Shoubra");
@@ -49,6 +54,9 @@ public class core_screenFragment extends Fragment {
         adapter.setDropDownViewResource(R.layout.spinner_item);
         AreaList.setAdapter(adapter);
 
+        final ArrayList<String> choices = new ArrayList<String>();
+
+        budget = (EditText) rootView.findViewById(R.id.budgetvalue);
         foodButton=(ImageButton)rootView.findViewById(R.id.food);
         cafeButton=(ImageButton)rootView.findViewById(R.id.cafe);
         entertainmentButton=(ImageButton)rootView.findViewById(R.id.game);
@@ -61,42 +69,95 @@ public class core_screenFragment extends Fragment {
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
 
+                if(choices.contains("restaurant")){
+                    choices.remove("restaurant");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("restaurant");
+                    v.setSelected(true);
+                }
             }
         });
 
         entertainmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
+
+                if(choices.contains("entertainment")){
+                    choices.remove("entertainment");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("entertainment");
+                    v.setSelected(true);
+                }
+
             }
         });
 
         cafeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
 
+                if(choices.contains("cafe")){
+                    choices.remove("cafe");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("cafe");
+                    v.setSelected(true);
+                }
             }
         });
         cinemaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
+                if(choices.contains("cinema")){
+                    choices.remove("cinema");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("cinema");
+                    v.setSelected(true);
+                }
+
 
             }
         });
         ahwaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
+                if(choices.contains("ahwa")){
+                    choices.remove("ahwa");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("ahwa");
+                    v.setSelected(true);
+                }
+
             }
         });
         concertsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.setSelected(true);
+                if(choices.contains("others")){
+                    choices.remove("others");
+                    v.setSelected(false);
+                }
+                else {
+
+                    choices.add("others");
+                    v.setSelected(true);
+                }
+
             }
         });
 
@@ -104,11 +165,22 @@ public class core_screenFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+                String budgetValue = budget.getText().toString();
+                String spinnerValue = AreaList.getSelectedItem().toString();
+                Intent intent = new Intent(getActivity(),KhrogatPackages.class);
+
+                intent.putExtra("budget", budgetValue);
+                intent.putExtra("choices",choices);
+                intent.putExtra("location", spinnerValue);
+                getActivity().startActivity(intent);
+
             }
         });
 
         return rootView;
     }
+
 
 
 }
