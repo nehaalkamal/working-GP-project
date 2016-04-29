@@ -16,94 +16,68 @@
         android:background="#ffffff"
 
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Frozzy Twist"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:id="@+id/txtmainname"
-            android:textColor="#808080"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8.9"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/txtrate"
-            android:layout_toRightOf="@id/txtmainname"
-            android:layout_marginLeft="15dp"
-
-
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/starlogo"
-            android:layout_marginTop="18dp"
-            android:layout_toRightOf="@+id/txtrate"
-
-            android:src="@drawable/favorite"
-            />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Family Cinema"
+          android:textSize="22dp"
+          android:textStyle="bold"
+          android:id="@+id/txtmainname"
+          android:textColor="#808080"
+          android:layout_marginTop="15dp"
+          android:layout_marginLeft="20dp"
+          />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/placelogo"
-            android:src="@drawable/rsz_frozzy_twist"
-            android:layout_marginTop="65dp"
-            android:layout_below="@+id/txtrate"
+            android:src="@drawable/rsz_cinema"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/txtmainname"
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/txtmainname"
             android:layout_alignStart="@+id/txtmainname"
 
             />
-
-
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/phonelogo"
             android:layout_toRightOf="@+id/placelogo"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/rsz_call2"
+           android:src="@drawable/rsz_rsz_call2"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="01114540193"
-            android:textSize="18dp"
+            android:textSize="20dp"
 
             android:id="@+id/txtphoneno"
 
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="55dp"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/phonelogo"
             />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/locationlogo"
-            android:layout_below="@id/phonelogo"
-            android:layout_toRightOf="@id/placelogo"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/rsz_rsz_2locationicon"
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/locationlogo"
+             android:layout_below="@id/phonelogo"
+             android:layout_toRightOf="@id/placelogo"
+             android:layout_marginLeft="10dp"
+             android:layout_marginTop="10dp"
+             android:src="@drawable/rsz_2locationicon"
 
 
-            />
+             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text= "Block 13014, 6th Plot, Rd. 31, 1St Industrial Zone"
-            android:textSize="18dp"
+            android:textSize="20dp"
 
             android:id="@+id/txtLocation"
 
@@ -113,46 +87,18 @@
             android:layout_below="@+id/txtphoneno"
             android:layout_toRightOf="@+id/locationlogo"
             />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cuisinelogo"
-            android:layout_below="@id/txtLocation"
-            android:layout_toRightOf="@id/placelogo"
-            android:layout_marginLeft="10dp"
-
-            android:src="@drawable/rsz_rsz_rsz_cuisine"
-
-
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text= "Desserts"
-            android:textSize="18dp"
-
-            android:id="@+id/txtcuisine"
-
-
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_below="@+id/txtLocation"
-            android:layout_toRightOf="@+id/cuisinelogo"
-            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtprice"
             android:text="Price:"
-            android:textSize="18dp"
-
+            android:textSize="20dp"
+            android:textColor="#008080"
             android:textStyle="bold"
-            android:layout_below="@id/txtcuisine"
-
+            android:layout_below="@id/txtLocation"
+            android:layout_toRightOf="@id/placelogo"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
 
 
             />
@@ -160,13 +106,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtpriceno"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:text="30 L.E"
 
-            android:layout_below="@+id/txtcuisine"
-
+            android:layout_below="@+id/txtLocation"
             android:layout_toRightOf="@+id/txtprice"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
 
             />
@@ -175,11 +120,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtopenhours"
             android:text="Opening Hours:"
-            android:textSize="18dp"
-
+            android:textSize="20dp"
+            android:textColor="#008080"
             android:textStyle="bold"
             android:layout_below="@id/txtprice"
-
+            android:layout_toRightOf="@id/placelogo"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
 
@@ -189,77 +134,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtopenhoursin"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:text="10:00 am to 3:00 am"
 
-            android:layout_below="@+id/txtpriceno"
-            android:layout_toRightOf="@id/txtopenhours"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtfeatures"
-
-            android:text="Features: "
-
-            android:layout_below="@+id/txtopenhoursin"
-
-            android:textSize="18dp"
-
-            android:textStyle="bold"
+            android:layout_below="@+id/txtopenhours"
+            android:layout_toRightOf="@id/placelogo"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtfeaturesin"
-            android:textSize="18dp"
-            android:text="Delivery, WiFi, Outdoor, No Smoking Area"
-
-            android:layout_below="@+id/txtopenhoursin"
-            android:layout_toRightOf="@id/txtfeatures"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
+           android:layout_marginRight="10dp"
             />
 
 
+       <EditText
+           android:layout_width="280dp"
+           android:layout_height="70dp"
+           android:id="@+id/txtcomment"
+           android:layout_below="@+id/txtopenhours"
+           android:layout_marginTop="50dp"
+           android:layout_marginLeft="15dp"
 
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="70dp"
-            android:id="@+id/txtcomment"
-            android:layout_below="@+id/txtfeaturesin"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="15dp"
-
-            android:hint="Write a comment..."
-            android:textSize="18dp"
-            android:textColorHint="#C0C0C0"
-            />
+           android:hint="Write a comment..."
+           android:textSize="20dp"
+           android:textColorHint="#C0C0C0"
+           />
         <ImageButton
             android:id="@+id/ImageComment"
-            android:src="@drawable/rsz_arrow"
+            android:src="@drawable/arrowenter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:layout_below="@+id/txtfeaturesin"
-            android:layout_marginTop="40dp"
+            android:layout_below="@+id/txtopenhoursin"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@+id/txtcomment"
             android:layout_above="@+id/commentslist" />
-        <ListView
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/commentslist"
-            android:layout_below="@+id/txtcomment"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            ></ListView>
+       <ListView
+           android:layout_width="350dp"
+           android:layout_height="wrap_content"
+           android:id="@+id/commentslist"
+           android:layout_below="@+id/txtcomment"
+           android:layout_marginLeft="15dp"
+           android:layout_marginRight="15dp"
+           ></ListView>
 
     </RelativeLayout>
 
