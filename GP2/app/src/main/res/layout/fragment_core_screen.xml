@@ -100,7 +100,7 @@
             android:button="@drawable/food_button_pressed"
             android:clickable="true"
             android:layout_weight="1"
-            />
+            android:checked="false" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:baseline="@dimen/activity_vertical_margin"
-            android:button="@drawable/dessert_button_pressed"
+            android:button="@drawable/movie_button_pressed"
             android:clickable="true"
 
             />
@@ -196,7 +196,7 @@
             android:textSize="22sp"
             android:layout_gravity="left"
             android:textStyle="bold" />
-
+<!--
         <Spinner
             android:id="@+id/AreaSpinner"
             android:layout_width="170dp"
@@ -204,9 +204,27 @@
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             android:layout_weight="1"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp" />-->
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:gravity="left"
+        android:background="@drawable/spinner_border"
+        android:layout_gravity="left"
+        android:layout_marginTop="4dp">
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:gravity="left"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -219,10 +237,5 @@
         android:typeface="normal"
         android:textStyle="bold"
         android:singleLine="true"
-        android:background="@drawable/ripple_effect"
-
-
-
-
-        />
+        android:background="@drawable/ripple_effect" />
 </LinearLayout>
