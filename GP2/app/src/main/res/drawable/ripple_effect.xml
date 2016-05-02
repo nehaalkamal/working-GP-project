@@ -2,7 +2,7 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:color="#a3a1a1"
-    tools:targetApi="ICE_CREAM_SANDWICH">
+    tools:targetApi="lollipop">
     <item android:drawable="@drawable/rounded_yalla_button">
         <shape>
         </shape>
