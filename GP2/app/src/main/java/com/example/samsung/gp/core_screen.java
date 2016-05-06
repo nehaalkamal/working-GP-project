@@ -15,7 +15,7 @@ public class core_screen extends AppCompatActivity {
         this.setTitle("Nokhrog Fen");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-;
+
     }
 
 }

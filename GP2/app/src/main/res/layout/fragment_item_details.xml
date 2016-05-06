@@ -52,9 +52,10 @@
             />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/placelogo"
+            android:scaleType="fitXY"
             android:src="@drawable/rsz_frozzy_twist"
             android:layout_marginTop="65dp"
             android:layout_below="@+id/txtrate"
@@ -121,6 +122,7 @@
             android:layout_below="@id/txtLocation"
             android:layout_toRightOf="@id/placelogo"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
 
             android:src="@drawable/rsz_rsz_rsz_cuisine"
 
@@ -132,7 +134,7 @@
             android:layout_height="wrap_content"
             android:text= "Desserts"
             android:textSize="18dp"
-
+            android:layout_marginTop="10dp"
             android:id="@+id/txtcuisine"
 
 
