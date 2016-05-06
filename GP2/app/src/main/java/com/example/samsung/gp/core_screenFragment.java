@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,9 +47,6 @@ public class core_screenFragment extends Fragment {
 
 
         final Context context = getContext();
-
-        final Animation animAlpha = AnimationUtils.loadAnimation(context, R.anim.anim_alpha);
-
 
 
         budget = (EditText) rootView.findViewById(R.id.budgetvalue);
@@ -106,24 +101,37 @@ public class core_screenFragment extends Fragment {
 // TODO Auto-generated method stub
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 // TODO Auto-generated method stub
             }
         });
+        foodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+            }
+        });
+        entertainmenttButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
 
         cafeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(animAlpha);
 
             }
         });
         cinemaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(animAlpha);
+
 
 
 
@@ -132,7 +140,7 @@ public class core_screenFragment extends Fragment {
         ahwaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(animAlpha);
+
 
 
             }
@@ -140,7 +148,7 @@ public class core_screenFragment extends Fragment {
         dessertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(animAlpha);
+
 
             }
         });
