@@ -55,7 +55,7 @@ public class KhrogatPackagesFragment extends Fragment {
         if (getActivity() != null) {
 //Da hytshal 3shan n5li el data dynamically
             KhrogaItem KI = new KhrogaItem("4d7cd8f486cfa143c467d1a0", "Peking", "70", "Restaurant", "43 Rd. 250", "8.2", "12:00 PM to 12:00 AM", "Chinese Restaurant", "WiFi, No Smoking Area, Alcohol", "2016078", "http://i.imgur.com/pcQAn5l.png", "Maadi");
-            KhrogaItem KI2 = new KhrogaItem("4d846cba5e70224b61760c09", "Auntie Anne's Auntie Anne's ", "40", "Restaurant Restaurant Restaurant", "76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)", "7.9", "9:30 AM to 1:00 AM", "German RestaurantGerman RestaurantGerman RestaurantGerman RestaurantGerman Restaurant", "WiFi, Outdoor", "2016629", "http://i.imgur.com/pcQAn5l.png", "Maadi");
+            KhrogaItem KI2 = new KhrogaItem("4d846cba5e70224b61760c09", "Auntie Anne's", "40", "Restaurant", "76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)76 Rd 9 (82 Rd)", "7.9", "9:30 AM to 1:00 AM", "German RestaurantGerman RestaurantGerman RestaurantGerman RestaurantGerman Restaurant", "WiFi, Outdoor", "2016629", "http://i.imgur.com/pcQAn5l.png", "Maadi");
             KhrogaItem KI3 = new KhrogaItem("4d846cba5e70224b61760c09", "Mcdonald's", "35", "cafes", "76 Rd 9 (82 Rd)", "10", "9:30 AM to 1:00 AM", "German Restaurant", "WiFi, Outdoor", "2016629", "http://i.imgur.com/pcQAn5l.png", "Maadi");
             KhrogaItem KI4 = new KhrogaItem("4d846cba5e70224b61760c09", "Nola- نولا", "20", "others", "76 Rd 9 (82 Rd)", "3.5", "9:30 AM to 1:00 AM", "German Restaurant", "WiFi, Outdoor", "2016629", "http://i.imgur.com/pcQAn5l.png", "Maadi");
 
