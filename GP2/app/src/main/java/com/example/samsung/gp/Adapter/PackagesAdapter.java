@@ -23,6 +23,7 @@ public class PackagesAdapter extends ArrayAdapter<KhrogaPackage> {
 
     public PackagesAdapter(Context context, List<KhrogaPackage> objects) {
         super(context, 0, objects);
+
     }
 
     @Override
@@ -58,8 +59,8 @@ public class PackagesAdapter extends ArrayAdapter<KhrogaPackage> {
 
         }
 
-        if(khrogapack.getKhrogaPackage().size()>3)
-            tempTitle +="and "+(khrogapack.getKhrogaPackage().size()-3)+" more";
+        if(khrogapack.getKhrogaPackage().size()>=3)
+            tempTitle +="and "+(khrogapack.getKhrogaPackage().size()-2)+" more"; // -2 : for the 2 items displayed
 
 
         khrogapack.setPrice(String.valueOf(tempPrice));

@@ -1,24 +1,26 @@
 package com.example.samsung.gp;
 
 import android.app.Fragment;
-import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
-
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.text.util.Linkify;
+
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.samsung.gp.Model.KhrogaItem;
+import com.squareup.picasso.Picasso;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class item_detailsFragment extends Fragment {
+
 
 
     private TextView ItemName;
@@ -35,13 +37,19 @@ public class item_detailsFragment extends Fragment {
     String[] price = {"Menna Salah","Menna Salah","Menna Salah"};
     Integer[] image = {R.drawable.useravatar,R.drawable.useravatar,R.drawable.useravatar};*/
 
+
     public item_detailsFragment() {
     }
+
+    /*  if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.pop_up_listing,parent,false);
+        }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView2 = inflater.inflate(R.layout.fragment_item_details, container, false);
+
 
        /* ListView listItem = (ListView) rootView2.findViewById(R.id.commentslist);
         CustomArrayAdapter myAdapter = new CustomArrayAdapter(getActivity(), Items);
@@ -72,37 +80,45 @@ public class item_detailsFragment extends Fragment {
         return  rootView2;
     }
 
+/*
+        Intent intent = getActivity().getIntent();
 
 
-   /* class CustomArrayAdapter extends ArrayAdapter {
+        if (intent != null) {
 
-        Context con;
-        String[] values;
-        String[] Prices;
-        Integer[] imageId;
 
-        public CustomArrayAdapter(Context context, String[] items) {
-            // TODO Auto-generated constructor stub
-            super(context, R.layout.comments_list_item, items);
-            con = context;
-            values = items;
-            imageId = image;
-            Prices = price;
+   *//* class CustomArrayAdapter extends ArrayAdapter {
+
+            KhrogaItem DetailedItem = (KhrogaItem) intent.getSerializableExtra("DetailedItem");
+            ((TextView) rootView2.findViewById(R.id.txtmainname)).setText(DetailedItem.getName());
+            ((TextView) rootView2.findViewById(R.id.txtphoneno)).setText(DetailedItem.getPhone());
+            ((TextView) rootView2.findViewById(R.id.txtLocation)).setText(DetailedItem.getAddress());
+            ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
+            ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
+            ((TextView) rootView2.findViewById(R.id.txtcuisine)).setText(DetailedItem.getCuisine());
+            ((TextView) rootView2.findViewById(R.id.txtrate)).setText(DetailedItem.getRate());
+            ((TextView) rootView2.findViewById(R.id.txtfeaturesin)).setText(DetailedItem.getFeatures());
+           Drawable noImg =getActivity().getResources().getDrawable(R.drawable.no_image);
+            Picasso.with(getActivity()).load(DetailedItem.getImage()).placeholder(noImg).into(((ImageView) rootView2.findViewById(R.id.placelogo)));
+
+
+
 
         }
+
 
 
 
         public View getView(final int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.comments_list_item, parent,false);
-            *//*
-            * karim:*//*
+            *//**//*
+            * karim:*//**//*
 
-           *//* if (convertView == null) {
+           *//**//* if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.comments_list_item, parent, false);
         }
-            View rowView = convertView;*//*
+            View rowView = convertView;*//**//*
 
 
 
@@ -116,7 +132,7 @@ public class item_detailsFragment extends Fragment {
             imageView.setImageResource(imageId[position]);
 
 
-            *//*imageComment.setOnClickListener(new View.OnClickListener() {
+            *//**//*imageComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //String test = txtComment.getText().toString();
@@ -125,10 +141,16 @@ public class item_detailsFragment extends Fragment {
                     imageView.setImageResource(imageId[position]);
 
                 }
-            });*//*
-            return rowView;*/
+            });*//**//*
+            return rowView;*//*
         }
 
 
+
+
+
+        return rootView2;
+    }*/
+}
 
 

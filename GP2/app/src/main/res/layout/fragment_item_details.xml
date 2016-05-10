@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:background="#008080"
                 android:id="@+id/layout"
-               android:padding="5dp"
+               android:padding="10dp"
                 style="@android:style/Animation">
 
         <ImageView
@@ -33,11 +33,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/placelogo"
             android:src="@drawable/rsz_frozzy_twist"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_alignParentTop="true"
 
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
+
 
             />
                 <TextView
@@ -85,13 +86,13 @@
             android:textSize="15dp"
             android:text="Desserts"
             android:layout_marginRight="10dp"
-            android:layout_below="@+id/txtrate"
-                   android:layout_toRightOf="@id/placelogo"
-                   android:layout_marginLeft="20dp"
-            android:layout_marginTop="0dp"
                    android:textColor="#ffffff"
+                   android:layout_toRightOf="@+id/placelogo"
+                   android:layout_below="@+id/txtrate"
+                 android:layout_marginLeft="20dp"
+                   />
 
-            />
+
 </RelativeLayout>
 
 
@@ -167,7 +168,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cuisinelogo"
+
             android:layout_below="@id/line2"
+
+            android:layout_toRightOf="@id/placelogo"
+
 
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
@@ -180,11 +185,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text= "Delivery, WiFi, Outdoor, No Smoking Area"
             android:textSize="15dp"
             android:textColor="#000000"
             android:id="@+id/txtfeaturesin"
             android:layout_marginTop="15dp"
+
+
+
+
+
+
 
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"

@@ -1,4 +1,4 @@
-package com.example.samsung.gp;
+package com.example.samsung.gp.Adapter;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

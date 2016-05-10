@@ -1,22 +1,18 @@
 package com.example.samsung.gp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import com.example.samsung.gp.Adapter.spinnerAdapter;
 
 import java.util.ArrayList;
 
@@ -39,7 +35,7 @@ public class core_screenFragment extends Fragment {
     private CheckBox ahwaButton;
     private CheckBox dessertButton;
     private Button yallaButton;
-    String spinnerValue;
+
 
     public core_screenFragment() {
     }
@@ -49,9 +45,6 @@ public class core_screenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_core_screen, container, false);
-
-
-        final Context context = getContext();
 
 
         budget = (EditText) rootView.findViewById(R.id.budgetvalue);
@@ -84,7 +77,7 @@ public class core_screenFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
+
 
             }
         });
@@ -103,61 +96,15 @@ public class core_screenFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-// TODO Auto-generated method stub
+             // TODO Auto-generated method stub
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-// TODO Auto-generated method stub
+            // TODO Auto-generated method stub
             }
         });
-        foodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-        entertainmenttButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-
-        cafeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        cinemaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-
-            }
-        });
-        ahwaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-            }
-        });
-        dessertButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            }
-        });
-
 
         yallaButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,13 +112,13 @@ public class core_screenFragment extends Fragment {
 
 
                 String budgetValue = budget.getText().toString();
-                //  String spinnerValue = spinner.getSelectedItem().toString();
-                Intent intent = new Intent(getActivity(), item_details.class);
+                String spinnerValue = spinner.getSelectedItem().toString();
+                Intent intent = new Intent(getActivity(), KhrogatPackages.class);
 
                 intent.putExtra("budget", budgetValue);
                 intent.putExtra("choices", getCheckedButtons());
                 intent.putExtra("location", spinnerValue);
-                Log.e("LOG_GP","returned:"+spinnerValue+"-size checked:"+getCheckedButtons().size()+"- budget:"+budgetValue);
+
                 getActivity().startActivity(intent);
 
             }

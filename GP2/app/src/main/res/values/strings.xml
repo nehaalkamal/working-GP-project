@@ -7,11 +7,11 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="spinner_title">Locations</string>
     <string name="random">"For random Khoroga! shake your phone"</string>
-    <string name="budgetText">"Your Budget"</string>
+    <string name="budgetText"> "Your Budget" </string>
     <string name="budgetValue">.EGP</string>
-    <string name="activities_question">What would you like to do ?</string>
-    <string name="areaText">Area</string>
-    <string name="YallaButton">"   Yalla bena!  "</string>
+    <string name="activities_question">" Activities to do "</string>
+    <string name="areaText">" Area "</string>
+    <string name="YallaButton"> "  Yalla bena!  " </string>
     <string name="title_activity_core_screen">core_screen</string>
     <string name="title_activity_login_activityy">LoginActivityy</string>
     <string name="title_activity_khrogat_packages">KhrogatPackages</string>
