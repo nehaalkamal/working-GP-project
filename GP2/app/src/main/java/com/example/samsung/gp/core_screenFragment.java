@@ -166,7 +166,7 @@ public class core_screenFragment extends Fragment {
 
                 String budgetValue = budget.getText().toString();
                 //  String spinnerValue = spinner.getSelectedItem().toString();
-                Intent intent = new Intent(getActivity(), KhrogatPackages.class);
+                Intent intent = new Intent(getActivity(), item_details.class);
 
                 intent.putExtra("budget", budgetValue);
                 intent.putExtra("choices", getCheckedButtons());
