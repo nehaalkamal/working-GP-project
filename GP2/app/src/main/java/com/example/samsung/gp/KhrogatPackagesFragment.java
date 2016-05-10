@@ -19,7 +19,7 @@ import android.widget.ListView;
 import com.example.samsung.gp.Adapter.PackagesAdapter;
 import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.Model.KhrogaPackage;
-import com.example.samsung.gp.Model.listingAdapter;
+import com.example.samsung.gp.Adapter.listingAdapter;
 
 import java.util.ArrayList;
 

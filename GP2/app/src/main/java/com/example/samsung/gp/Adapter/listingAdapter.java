@@ -1,4 +1,4 @@
-package com.example.samsung.gp.Model;
+package com.example.samsung.gp.Adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.R;
 import com.squareup.picasso.Picasso;
 
