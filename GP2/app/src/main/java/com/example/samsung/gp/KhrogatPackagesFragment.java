@@ -21,10 +21,6 @@ import com.example.samsung.gp.Adapter.PackagesAdapter;
 import com.example.samsung.gp.Adapter.listingAdapter;
 import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.Model.KhrogaPackage;
-<<<<<<< HEAD
-=======
-import com.example.samsung.gp.Adapter.listingAdapter;
->>>>>>> origin/master
 
 import java.util.ArrayList;
 

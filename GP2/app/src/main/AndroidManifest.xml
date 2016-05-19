@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.samsung.gp">
     <uses-permission android:name="android.permission.INTERNET" />
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
     <application
         android:name="com.example.samsung.gp.app.AppController"
         android:allowBackup="true"
