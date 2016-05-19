@@ -2,7 +2,6 @@ package com.example.samsung.gp;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +42,8 @@ public class item_detailsFragment extends Fragment {
             ((TextView) rootView2.findViewById(R.id.txtcuisine)).setText(DetailedItem.getCuisine());
             ((TextView) rootView2.findViewById(R.id.txtrate)).setText(DetailedItem.getRate());
             ((TextView) rootView2.findViewById(R.id.txtfeaturesin)).setText(DetailedItem.getFeatures());
-           Drawable noImg =getActivity().getResources().getDrawable(R.drawable.no_image);
-            Picasso.with(getActivity()).load(DetailedItem.getImage()).placeholder(noImg).into(((ImageView) rootView2.findViewById(R.id.placelogo)));
+
+            Picasso.with(getActivity()).load(DetailedItem.getImage()).placeholder(R.drawable.no_image).into(((ImageView) rootView2.findViewById(R.id.placelogo)));
 
 
 

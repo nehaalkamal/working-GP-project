@@ -305,5 +305,12 @@
         android:textSize="20sp"
         android:singleLine="true"
         android:background="@drawable/rounded_yalla_button" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="logout"
+        android:textAllCaps="false"
+        android:textSize="15dp" />
 </LinearLayout>
 </ScrollView>

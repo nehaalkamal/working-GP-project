@@ -13,6 +13,8 @@ import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.Model.KhrogaPackage;
 import com.example.samsung.gp.R;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -66,7 +68,9 @@ public class PackagesAdapter extends ArrayAdapter<KhrogaPackage> {
         khrogapack.setPrice(String.valueOf(tempPrice));
         khrogapack.setTitle(tempTitle);
        // khrogapack.setRating("" + (tempRating * (packageRating.getNumStars()) / (khrogapack.getKhrogaPackage().size() * 10)));
-        khrogapack.setRating("" + (tempRating  / (khrogapack.getKhrogaPackage().size())));
+
+        khrogapack.setRating("" +new BigDecimal((tempRating  / (khrogapack.getKhrogaPackage().size()))).setScale(1, RoundingMode.HALF_UP).doubleValue() );// for rounding or approximation
+        //khrogapack.setRating("" + (tempRating  / (khrogapack.getKhrogaPackage().size())));
 
         //Han7ot el values b2a tzhr fel layout in textViews w kda
         packagePrice.setText(khrogapack.getPrice());

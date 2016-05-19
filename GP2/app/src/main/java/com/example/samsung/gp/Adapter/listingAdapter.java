@@ -1,7 +1,6 @@
-package com.example.samsung.gp.Model;
+package com.example.samsung.gp.Adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.R;
 import com.squareup.picasso.Picasso;
 
@@ -35,11 +35,9 @@ public class listingAdapter extends ArrayAdapter<KhrogaItem> {
 
             ((TextView) convertView.findViewById(R.id.name)).setText(item.getName());
             ((TextView) convertView.findViewById(R.id.price)).setText(item.getPrice());
-            Drawable noImg =getContext().getResources().getDrawable(R.drawable.no_image);
-            Picasso.with(getContext()).load(item.getImage()).placeholder(noImg).into(((ImageView) convertView.findViewById(R.id.image)));
+           // Drawable noImg =getContext().getResources().getDrawable(R.drawable.no_image);
 
-
-
+            Picasso.with(getContext()).load(item.getImage()).placeholder(R.drawable.no_image).into(((ImageView) convertView.findViewById(R.id.image)));
 
         return convertView;
     }

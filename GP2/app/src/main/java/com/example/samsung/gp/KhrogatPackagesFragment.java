@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,9 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 import com.example.samsung.gp.Adapter.PackagesAdapter;
+import com.example.samsung.gp.Adapter.listingAdapter;
 import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.Model.KhrogaPackage;
-import com.example.samsung.gp.Model.listingAdapter;
 
 import java.util.ArrayList;
 
@@ -31,9 +32,12 @@ public class KhrogatPackagesFragment extends Fragment {
     private PackagesAdapter packagesAdapter;
     private GridView packagesGridView;
     private Dialog list_dialog;
+    private static ArrayList<KhrogaItem> myListItem=new ArrayList<>();
+
 
     public KhrogatPackagesFragment() {
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,11 +49,11 @@ public class KhrogatPackagesFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
 
-//if (intent != null) {
+if (intent != null) {
 
-        ArrayList<String> choices = intent.getStringArrayListExtra("choices");
-        String budget = intent.getStringExtra("budget");
-        String location = intent.getStringExtra("location");
+
+      myListItem= (ArrayList<KhrogaItem>) intent.getSerializableExtra("myListItem");
+        Log.e("testIntent",""+myListItem.size());
 
 
         if (getActivity() != null) {
@@ -60,7 +64,7 @@ public class KhrogatPackagesFragment extends Fragment {
             KhrogaItem KI4 = new KhrogaItem("4d846cba5e70224b61760c09", "Nola- نولا", "20", "others", "76 Rd 9 (82 Rd)", "3.5", "9:30 AM to 1:00 AM", "German Restaurant", "WiFi, Outdoor", "2016629", "http://i.imgur.com/pcQAn5l.png", "Maadi");
 
             ArrayList<KhrogaItem> KL = new ArrayList<>();
-            KL.add(KI);
+           KL.add(KI);
             KL.add(KI2);
 
             ArrayList<KhrogaItem> KL2 = new ArrayList<>();
@@ -82,7 +86,7 @@ public class KhrogatPackagesFragment extends Fragment {
             KhrogaPackage KP4 = new KhrogaPackage();
             KhrogaPackage KP5 = new KhrogaPackage();
 
-            KP.setKhrogaPackage(KL);
+            KP.setKhrogaPackage(myListItem);
             KP.setFavorited(true);
 
             KP2.setKhrogaPackage(KL2);
@@ -106,7 +110,7 @@ public class KhrogatPackagesFragment extends Fragment {
 
         }
 
-        //    }
+  }
 
 
         packagesGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,6 +122,27 @@ public class KhrogatPackagesFragment extends Fragment {
 
             }
         });
+
+        packagesGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                KhrogaPackage selectedPackage = packagesAdapter.getItem(position);
+                Log.i("longPress", selectedPackage.toString());
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "\n\n");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, selectedPackage.toString());
+                startActivity(Intent.createChooser(sharingIntent, "Share selected khoroga!"));
+
+                //  view.getBackground().setColorFilter(Color.CYAN, PorterDuff.Mode.DARKEN);
+
+                return true;
+            }
+        });
+
+
+
+
 
 
         return rootView;
@@ -156,4 +181,5 @@ public class KhrogatPackagesFragment extends Fragment {
 
         list_dialog.show();
     }
+
 }

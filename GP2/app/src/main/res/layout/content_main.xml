@@ -14,26 +14,16 @@
         android:id="@+id/textView2" />
 
     <EditText
-        android:layout_width="160dp"
+        android:layout_width="350dp"
         android:layout_height="45dp"
-        android:hint="First Name"
+        android:hint="Full Name"
         android:textColorHint="#B6B6B4"
         android:textAlignment="center"
         android:id="@+id/txtname"
         android:background="@drawable/rounded_edittext"
         android:layout_marginTop="10dp"
         />
-    <EditText
-        android:id="@+id/txtlastname"
-        android:layout_width="160dp"
-        android:layout_height="45dp"
-        android:hint="Last Name"
-        android:textColorHint="#B6B6B4"
-        android:textAlignment="center"
-        android:layout_alignTop="@+id/txtname"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/rounded_edittext" />
+
     <EditText
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -72,43 +62,28 @@
         android:layout_below="@+id/txtpassword"
         android:layout_marginTop="15dp"
         />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:layout_below="@+id/txtpassword2"
-        android:layout_marginTop="15dp"
-        android:prompt="@string/spinner_title"
-        android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/txtlocation"
-        android:layout_toRightOf="@+id/txtlocation" />
-
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:paddingTop="6dp"
-        android:text="   Location:"
-        android:textSize="22dp"
-        android:textColor="#979290"
-        android:id="@+id/txtlocation"
-        android:layout_alignTop="@+id/spinner1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:background="#008080"
-        android:text="Get Started"
+        android:text="Sign up"
         android:textSize="18dp"
         android:textColor="#ffffff"
         android:id="@+id/startbutton"
         android:layout_marginTop="25dp"
-        android:layout_below="@+id/spinner1"
+        android:layout_below="@+id/txtpassword2"
         android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/btnLinkToLoginScreen"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="Back To Login"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:layout_below="@+id/startbutton"
+        android:layout_alignRight="@+id/txtpassword2"
+        android:layout_alignEnd="@+id/txtpassword2" />
 
 
 

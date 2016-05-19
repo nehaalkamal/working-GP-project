@@ -16,12 +16,16 @@ public class KhrogatPackages extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         this.setTitle("Suggested khrogat");
+
+       // getWebservice();
     }
 
     @Override //for Font
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+
 
 
 

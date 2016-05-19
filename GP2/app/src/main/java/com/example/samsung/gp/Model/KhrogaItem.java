@@ -1,5 +1,8 @@
 package com.example.samsung.gp.Model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -20,7 +23,25 @@ public class KhrogaItem implements Serializable{
      private String image;
      private String location;
 
+     public KhrogaItem(JSONObject jItem) {
+          try {
+               this.ID = jItem.getString("ItemId");
+               this.name = jItem.getString("ItemName");
+               this.price = jItem.getString("ItemPrice");
+               this.category =jItem.getString("CategoryName");
+               this.address = jItem.getString("ItemAddress");
+               this.rate = jItem.getString("ItemRating");
+               this.openHours = jItem.getString("OpenHours");
+               this.cuisine = jItem.getString("Cuisine");
+               this.features =jItem.getString("Features");
+               this.phone = jItem.getString("Phone");
+               this.image =jItem.getString("ItemImage");
+               this.location = jItem.getString("ItemLocation");
+          } catch (JSONException e) {
+               e.printStackTrace();
+          }
 
+     }
 
      public KhrogaItem(String ID, String name, String price, String category, String address, String rate, String openHours, String cuisine, String features, String phone, String image, String location) {
           this.ID = ID;
@@ -39,6 +60,10 @@ public class KhrogaItem implements Serializable{
 
      public String getID() {
           return ID;
+     }
+
+     public KhrogaItem() {
+
      }
 
      public void setID(String ID) {

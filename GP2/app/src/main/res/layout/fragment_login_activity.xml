@@ -93,7 +93,7 @@ android:weightSum="1">
         android:text="Sign up"
         android:layout_weight="1"
 
-        android:id="@+id/textView"
+        android:id="@+id/SignUp"
         android:autoLink="web"
         android:textColor="#ffffffff"
         android:textSize="20dp"
