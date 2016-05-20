@@ -37,8 +37,8 @@ public class item_detailsFragment extends Fragment {
             ((TextView) rootView2.findViewById(R.id.txtmainname)).setText(DetailedItem.getName());
             ((TextView) rootView2.findViewById(R.id.txtphoneno)).setText(DetailedItem.getPhone());
             ((TextView) rootView2.findViewById(R.id.txtLocation)).setText(DetailedItem.getAddress());
-            ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
-            ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
+            //          ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
+//            ((TextView) rootView2.findViewById(R.id.txtpriceno)).setText(DetailedItem.getPrice());
             ((TextView) rootView2.findViewById(R.id.txtcuisine)).setText(DetailedItem.getCuisine());
             ((TextView) rootView2.findViewById(R.id.txtrate)).setText(DetailedItem.getRate());
             ((TextView) rootView2.findViewById(R.id.txtfeaturesin)).setText(DetailedItem.getFeatures());
