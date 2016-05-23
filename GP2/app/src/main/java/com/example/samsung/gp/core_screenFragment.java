@@ -162,7 +162,7 @@ public class core_screenFragment extends Fragment {
 
 
                 // Check for empty data in the correct form
-                if (!budgetValue.isEmpty() && !spinnerValue.equals("Choose Area") && !getCheckedButtons().isEmpty()) {
+                if (!budgetValue.isEmpty() && !spinnerValue.equals("ChooseArea") && !getCheckedButtons().isEmpty()) {
 
 
                     String bracketedChoices="(";
@@ -258,6 +258,7 @@ public class core_screenFragment extends Fragment {
     private void sendIntent(ArrayList<KhrogaItem> ItemList) {
         Intent intent = new Intent(getActivity(), KhrogatPackages.class);
         intent.putExtra("myListItem", ItemList);
+        intent.putExtra("myBudget",budget.getText().toString().trim()); //zawd dah w est2blo henak
         getActivity().startActivity(intent);
         myItemList.clear();
     }

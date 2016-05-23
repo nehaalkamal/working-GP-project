@@ -127,12 +127,12 @@ if (intent != null) {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 KhrogaPackage selectedPackage = packagesAdapter.getItem(position);
-                Log.i("longPress", selectedPackage.toString());
+
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "\n\n");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, selectedPackage.toString());
-                startActivity(Intent.createChooser(sharingIntent, "Share selected khoroga!"));
+                startActivity(Intent.createChooser(sharingIntent, "Share khoroga"));
 
                 //  view.getBackground().setColorFilter(Color.CYAN, PorterDuff.Mode.DARKEN);
 

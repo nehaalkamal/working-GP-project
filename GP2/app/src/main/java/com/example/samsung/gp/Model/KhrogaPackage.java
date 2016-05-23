@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Created by TOSHIBA on 2016-04-07.
  */
 public class KhrogaPackage implements Serializable{
-
+    String APPNAME="Download YALLA from playstore *InsertAppLinkHere*";
     private ArrayList<KhrogaItem> KhrogaPackageList;
     private String title;
     private String mixImage;
@@ -63,5 +63,24 @@ public class KhrogaPackage implements Serializable{
     public void setFavorited(boolean favorited) {
         this.favorited = favorited;
     }
+
+    @Override
+    public String toString() {
+        String strText="Yalla " ;
+        for (int i=0 ; i< KhrogaPackageList.size();i++){
+
+             strText+=  KhrogaPackageList.get(i).getName();
+            if(i!=KhrogaPackageList.size()-1)
+                strText+=" & ";
+
+        }
+        strText+="\nE3ml 7esabk 3la "+this.getPrice()+" LE\n\n"+APPNAME;
+
+
+
+        return strText;
+
+    }
+
 
 }
