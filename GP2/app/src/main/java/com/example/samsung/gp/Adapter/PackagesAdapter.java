@@ -33,6 +33,7 @@ public class PackagesAdapter extends ArrayAdapter<KhrogaPackage> {
 
         KhrogaPackage khrogapack = getItem(position);
 
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.package_item, parent, false);
@@ -80,15 +81,8 @@ public class PackagesAdapter extends ArrayAdapter<KhrogaPackage> {
 
             packagebtnFavourite.setChecked(true);
         }
-     /*   packagebtnFavourite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"Hi",Toast.LENGTH_LONG).show();
 
-            }
-        });
 
-*/
         return convertView;
 
     }

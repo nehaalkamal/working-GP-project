@@ -258,7 +258,7 @@ public class core_screenFragment extends Fragment {
     private void sendIntent(ArrayList<KhrogaItem> ItemList) {
         Intent intent = new Intent(getActivity(), KhrogatPackages.class);
         intent.putExtra("myListItem", ItemList);
-        intent.putExtra("myBudget",budget.getText().toString().trim()); //zawd dah w est2blo henak
+        intent.putExtra("budget",budget.getText().toString().trim()); //zawd dah w est2blo henak
         getActivity().startActivity(intent);
         myItemList.clear();
     }
