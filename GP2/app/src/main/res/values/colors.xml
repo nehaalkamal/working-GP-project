@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008080</color>
-    <color name="colorPrimaryDark">#008080</color>
+    <color name="colorPrimaryDark">#037070</color>
     <color name="colorAccent">#008080</color>
     <color name="accent_material_light_1">#008080</color>
     <color name="primary_material_light">#008080</color>
+
+    <color name="TabsChoiceColor">#ffffff</color>
+
 </resources>

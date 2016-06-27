@@ -2,6 +2,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.samsung.gp.core_screen">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+
+    <item android:id="@+id/action_profile"
+        android:icon="@drawable/profile_user1"
+        android:title="Profile"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_favourites"
+        android:icon="@drawable/heart2"
+        android:title="@string/title_activity_Favourites"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_logout"
+        android:title="Logout"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_login"
+        android:title="login"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
 </menu>

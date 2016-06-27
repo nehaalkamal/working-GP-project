@@ -3,6 +3,7 @@ package com.example.samsung.gp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,13 +11,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.samsung.gp.Adapter.FavDatabase;
 import com.example.samsung.gp.app.AppConfig;
 import com.example.samsung.gp.app.AppController;
 import com.example.samsung.gp.helper.SQLiteHandler;
@@ -34,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
     private Button btnLogin;
-    private TextView btnLinkToRegister;
+    private Button btnSignUp;
+    private Button btnSkip;
+
     private EditText inputEmail;
     private EditText inputPassword;
     private ProgressDialog pDialog;
@@ -51,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.email_sign_in_button);
-        btnLinkToRegister = (TextView) findViewById(R.id.SignUp);
+        btnSignUp = (Button) findViewById(R.id.SignUp);
+        btnSkip=(Button) findViewById(R.id.skipBtn);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -66,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         // Check if user is already logged in or not
         if (session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
         }
@@ -93,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Link to Register Screen
-        btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
@@ -102,7 +110,19 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+        btnSkip.setPaintFlags(btnSkip.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               //19/06/2016 lw msh logged
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+
+            }
+        });
     }
+
 
     @Override //for Font
     protected void attachBaseContext(Context newBase) {
@@ -137,18 +157,29 @@ public class LoginActivity extends AppCompatActivity {
                         // Now store the user in SQLite
                         String uid = jObj.getString("uid");
 
-                        JSONObject user = jObj.getJSONObject("user");
+                        JSONObject user = jObj.getJSONObject("user");  //// Biography birthDate Gender Location UserImage
                         String name = user.getString("name");
                         String email = user.getString("email");
+                        String location = user.getString("Location");
+                        String biography = user.getString("Biography");
+                        String userimage = user.getString("UserImage");
+                        String gender = user.getString("Gender");
+                        String birthdate = user.getString("birthDate");
                         String created_at = user
                                 .getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email,inputPassword.getText().toString(),uid,location,biography,gender,userimage,birthdate, created_at);
+
+                        //Inserting Favourites to sharedPreference named with user's mail
+
+                        getUserFavouritesFromBE(email);
+
+
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
-                                MainActivity.class);
+                                HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -198,6 +229,58 @@ public class LoginActivity extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+
+    private void getUserFavouritesFromBE(final String email) {
+
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+
+
+        JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.GET,
+                AppConfig.URL_User_Fav+"?email="+email, null,new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+
+                  if(response.getJSONArray("FavsResponse").length()!=0){
+
+                      JSONObject JO = (JSONObject) response.getJSONArray("FavsResponse").get(0);
+                       FavDatabase.initiateSPfromBE(JO.getString("favourites"), LoginActivity.this);
+
+                   }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                    Log.e("Login:getUserFavFromBE", e.getMessage());
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("Volley error", "Error: " + error.getMessage());
+                Toast.makeText(LoginActivity.this,
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
+
+        // Adding request to request queue
+        queue.add(strReq);
+
+
+
     }
 }
 

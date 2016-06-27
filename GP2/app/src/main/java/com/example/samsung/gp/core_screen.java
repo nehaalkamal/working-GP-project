@@ -1,16 +1,23 @@
 package com.example.samsung.gp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-import com.example.samsung.gp.Font.Font;
+import com.example.samsung.gp.helper.SQLiteHandler;
+import com.example.samsung.gp.helper.SessionManager;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class core_screen extends AppCompatActivity {
+    private SQLiteHandler db;
+    private SessionManager session;
 
 
     @Override
@@ -20,7 +27,13 @@ public class core_screen extends AppCompatActivity {
         this.setTitle("Nokhrog Fen");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        new Font().onCreate();
+
+        //session manager
+        session = new SessionManager(getApplicationContext());
+
+        // SQLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
 
     }
 
@@ -30,4 +43,43 @@ public class core_screen extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_core_screen, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.action_profile:{
+                // profile
+                return true;
+            }
+            case R.id.action_favourites: {
+
+                startActivity(new Intent(this, Favourites.class));
+                return true;
+            }
+            case R.id.action_logout: {
+
+                logoutUser();
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void logoutUser() {
+        session.setLogin(false);
+
+        db.deleteUsers();
+
+        // Launching the login activity
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

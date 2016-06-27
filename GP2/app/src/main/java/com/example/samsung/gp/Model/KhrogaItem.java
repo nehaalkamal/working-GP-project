@@ -22,6 +22,7 @@ public class KhrogaItem implements Serializable{
      private String phone;
      private String image;
      private String location;
+     private String banner;
 
      public KhrogaItem(JSONObject jItem) {
           try {
@@ -37,6 +38,7 @@ public class KhrogaItem implements Serializable{
                this.phone = jItem.getString("Phone");
                this.image =jItem.getString("ItemImage");
                this.location = jItem.getString("ItemLocation");
+               this.banner = jItem.getString("BannerImage");
           } catch (JSONException e) {
                e.printStackTrace();
           }
@@ -56,6 +58,23 @@ public class KhrogaItem implements Serializable{
           this.phone = phone;
           this.image = image;
           this.location = location;
+     }
+
+
+     public KhrogaItem(String ID, String name, String price, String category, String address, String rate, String openHours, String cuisine, String features, String phone, String image, String location,String banner) {
+          this.ID = ID;
+          this.name = name;
+          this.price = price;
+          this.category = category;
+          this.address = address;
+          this.rate = rate;
+          this.openHours = openHours;
+          this.cuisine = cuisine;
+          this.features = features;
+          this.phone = phone;
+          this.image = image;
+          this.location = location;
+          this.banner = banner;
      }
 
      public String getID() {
@@ -157,4 +176,15 @@ public class KhrogaItem implements Serializable{
      public void setLocation(String location) {
           this.location = location;
      }
+
+     public String getBanner() {
+          return banner;
+     }
+
+     public void setBanner(String banner) {
+          this.banner = banner;
+     }
+
+
+
 }

@@ -1,13 +1,17 @@
 package com.example.samsung.gp;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,17 +20,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.samsung.gp.Adapter.spinnerAdapter;
 import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.app.AppConfig;
-import com.example.samsung.gp.helper.SQLiteHandler;
-import com.example.samsung.gp.helper.SessionManager;
+import com.example.samsung.gp.app.AppController;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,12 +39,7 @@ import java.util.ArrayList;
  */
 public class core_screenFragment extends Fragment {
     Spinner spinner;
-    String[] spinnerList = {
-            "Maadi",
-            "Nasr City"
-
-    };
-
+    //String[] spinnerList = {"Maadi","Nasr City"}; added in string.xml
     private EditText budget;
     private CheckBox foodButton;
     private CheckBox cafeButton;
@@ -51,18 +47,10 @@ public class core_screenFragment extends Fragment {
     private CheckBox entertainmenttButton;
     private CheckBox ahwaButton;
     private CheckBox dessertButton;
+    private Dialog list_dialog;
     private Button yallaButton;
-    private Button btnLogout;
-    private SQLiteHandler db;
-    private SessionManager session;
-
-
-
 
     private static ArrayList<KhrogaItem> myItemList = new ArrayList<>();
-
-    public core_screenFragment() {
-    }
 
 
     @Override
@@ -80,7 +68,7 @@ public class core_screenFragment extends Fragment {
         dessertButton = (CheckBox) rootView.findViewById(R.id.dessert);
         yallaButton = (Button) rootView.findViewById(R.id.YallaButton);
         spinner= (Spinner) rootView.findViewById(R.id.spinner1);
-        btnLogout = (Button) rootView.findViewById(R.id.btnLogout);
+
 
 
 /*
@@ -113,8 +101,10 @@ public class core_screenFragment extends Fragment {
 
 
         spinnerAdapter adapter = new spinnerAdapter(getContext(), android.R.layout.simple_list_item_1);
-        adapter.addAll(spinnerList);
-        adapter.add("Choose Area");
+        adapter.addAll(getResources().getStringArray(R.array.array_spinner_areas));
+
+        //adapter.addAll(spinnerList);
+        //adapter.add("Choose Area");
         spinner.setAdapter(adapter);
         spinner.setSelection(adapter.getCount());
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -131,15 +121,6 @@ public class core_screenFragment extends Fragment {
             }
         });
 
-        // SqLite database handler
-        db = new SQLiteHandler(getContext());
-
-        // session manager
-        session = new SessionManager(getContext());
-
-        if (!session.isLoggedIn()) {
-            logoutUser();
-        }
 
        /* // Fetching user details from SQLite
         HashMap<String, String> user = db.getUserDetails();
@@ -158,22 +139,26 @@ public class core_screenFragment extends Fragment {
 
 
                 String budgetValue = budget.getText().toString().trim();
-                String spinnerValue = spinner.getSelectedItem().toString().replaceAll("\\s",""); //<-to remove the space between nasr city
+                String spinnerValue = spinner.getSelectedItem().toString().replaceAll("\\s", ""); //<-to remove the space between nasr city
+
+                if (Integer.parseInt(budgetValue) < 15) { //3ayz ytzbt
+                    showDialogue();
+                }
+                else{
+                    // Check for empty data in the correct form
+
+                    if (!budgetValue.isEmpty() && !spinnerValue.equals(getResources().getString(R.string.choose_area).replaceAll("\\s", "")) && !getCheckedButtons().isEmpty()) {
 
 
-                // Check for empty data in the correct form
-                if (!budgetValue.isEmpty() && !spinnerValue.equals("ChooseArea") && !getCheckedButtons().isEmpty()) {
+                    String bracketedChoices = "(";
 
+                    for (int i = 0; i < getCheckedButtons().size(); i++) {
+                        bracketedChoices += "\'" + getCheckedButtons().get(i) + "\'";
 
-                    String bracketedChoices="(";
-
-                    for (int i =0 ; i< getCheckedButtons().size();i ++){
-                        bracketedChoices+="\'"+getCheckedButtons().get(i)+"\'";
-
-                        if( i!= (getCheckedButtons().size()-1) )
-                            bracketedChoices+=",";
+                        if (i != (getCheckedButtons().size() - 1))
+                            bracketedChoices += ",";
                     }
-                    bracketedChoices+=")";
+                    bracketedChoices += ")";
 
                     Log.e("TestbracketedChoices", bracketedChoices);
 
@@ -186,17 +171,13 @@ public class core_screenFragment extends Fragment {
                             .show();
                 }
 
+            }
+
 
             }
 
         });
-        btnLogout.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                logoutUser();
-            }
-        });
         return rootView;
     }
 
@@ -204,7 +185,7 @@ public class core_screenFragment extends Fragment {
 
     private void getItemsParamterized(final String ItemPrice, final String ItemLocation , final String CategoryName) {
 
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+        //RequestQueue queue = Volley.newRequestQueue(getContext());
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
 
@@ -247,10 +228,10 @@ public class core_screenFragment extends Fragment {
         });
 
         // Adding request to request queue
-        queue.add(strReq);
+        AppController.getInstance().addToRequestQueue(strReq);
 
         //initialize the progress dialog and show it
-        progressDialog.setMessage("Fetching khrogat..");
+        progressDialog.setMessage("Making Khrogat...");
         progressDialog.show();
 
     }
@@ -258,7 +239,7 @@ public class core_screenFragment extends Fragment {
     private void sendIntent(ArrayList<KhrogaItem> ItemList) {
         Intent intent = new Intent(getActivity(), KhrogatPackages.class);
         intent.putExtra("myListItem", ItemList);
-        intent.putExtra("budget",budget.getText().toString().trim()); //zawd dah w est2blo henak
+        intent.putExtra("budget", budget.getText().toString().trim()); //zawd dah w est2blo henak
         getActivity().startActivity(intent);
         myItemList.clear();
     }
@@ -292,18 +273,8 @@ public class core_screenFragment extends Fragment {
     }
 
 
-    private void logoutUser() {
-        session.setLogin(false);
 
-        db.deleteUsers();
-
-        // Launching the login activity
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
-        getActivity().finish();
-    }
-
-    private void getWebservice(){
+/*    private void getWebservice(){
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
@@ -324,7 +295,7 @@ public class core_screenFragment extends Fragment {
                         Log.e("testKim", "" + myItemList.size());
 
                         //(((KhrogaItem) response.getJSONArray("ItemsResponse").get(i)).getID());
-                /*String email = response.getString("email");
+                *//*String email = response.getString("email");
                 JSONObject phone = response.getJSONObject("phone");
                 String home = phone.getString("home");
                 String mobile = phone.getString("mobile");
@@ -335,7 +306,7 @@ public class core_screenFragment extends Fragment {
                 jsonResponse += "Home: " + home + "\n\n";
                 jsonResponse += "Mobile: " + mobile + "\n\n";
 
-                txtResponse.setText(jsonResponse);*/
+                txtResponse.setText(jsonResponse);*//*
                     }
 
 
@@ -366,6 +337,17 @@ public class core_screenFragment extends Fragment {
 
 
 
-    }
+    }*/
 
+    public void showDialogue() {
+
+
+        list_dialog = new Dialog(getContext());
+
+        list_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        list_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        list_dialog.setContentView(R.layout.budget_pop_up);
+
+        list_dialog.show();
+    }
 }

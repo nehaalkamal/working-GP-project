@@ -5,6 +5,9 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.samsung.gp.R;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class AppController extends Application {
 
@@ -18,6 +21,11 @@ public class AppController extends Application {
 	public void onCreate() {
 		super.onCreate();
 		mInstance = this;
+
+		CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+				.setDefaultFontPath("fonts/Bariol_Regular.otf")
+				.setFontAttrId(R.attr.fontPath)
+				.build()); //FONT
 	}
 
 	public static synchronized AppController getInstance() {

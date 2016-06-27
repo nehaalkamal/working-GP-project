@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.samsung.gp.KhrogatPackages;
 import com.example.samsung.gp.Model.KhrogaItem;
 import com.example.samsung.gp.R;
 import com.squareup.picasso.Picasso;
@@ -34,7 +35,10 @@ public class listingAdapter extends ArrayAdapter<KhrogaItem> {
 
 
             ((TextView) convertView.findViewById(R.id.name)).setText(item.getName());
-            ((TextView) convertView.findViewById(R.id.price)).setText(item.getPrice());
+
+            if(getContext().getClass().getSimpleName().equals(KhrogatPackages.class.getSimpleName())){ // show price only in popup
+            ((TextView) convertView.findViewById(R.id.price)).setText(item.getPrice()+ getContext().getString(R.string.budgetCurrency));
+            }
            // Drawable noImg =getContext().getResources().getDrawable(R.drawable.no_image);
 
             Picasso.with(getContext()).load(item.getImage()).placeholder(R.drawable.no_image).into(((ImageView) convertView.findViewById(R.id.image)));

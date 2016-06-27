@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText Password;
     private EditText ConfirmPassword;
     private Button StartButton;
-    private Button back;
+
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         Password=(EditText) findViewById(R.id.txtpassword);
         ConfirmPassword=(EditText) findViewById(R.id.txtpassword2);
         StartButton=(Button)findViewById(R.id.startbutton);
-        back=(Button)findViewById(R.id.btnLinkToLoginScreen);
+        //back=(Button)findViewById(R.id.btnLinkToLoginScreen);
 
 
         // Progress dialog
@@ -76,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
 
         // Check if user is already logged in or not
-        if (session.isLoggedIn()) {
+        if (
+                session.isLoggedIn()) {
             // User is already logged in. Take him to main activity
             Intent intent = new Intent(MainActivity.this,
-                    core_screen.class);
+                    HomeActivity.class);//13/6: karim kant core_screen b2t HomeActivity
             startActivity(intent);
             finish();
         }
@@ -90,9 +92,22 @@ public class MainActivity extends AppCompatActivity {
                 String name = FirstName.getText().toString().trim();
                 String email = Email.getText().toString().trim();
                 String password = Password.getText().toString().trim();
+                String Confirmconpassword = ConfirmPassword.getText().toString().trim();
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(name, email, password);
+                    if(Confirmconpassword.equals(password)){
+                    registerUser(name, email, password,".",".",".",".","http://i.imgur.com/FSSMALk.png");/*
+                    Intent intent = new Intent(MainActivity.this,
+                            HomeActivity.class);//13/6: karim kant core_screen b2t HomeActivity
+                    startActivity(intent);
+                    finish();*/}
+                    else{
+
+                        Toast.makeText(getApplicationContext(),
+                                "Confirm Password are worng!", Toast.LENGTH_LONG)
+                                .show();
+                    }
+
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -101,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         // Link to Login Screen
-        back.setOnClickListener(new View.OnClickListener() {
+      /*  back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),
@@ -111,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+*/
     }
 
     @Override //for Font
@@ -124,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
      * email, password) to register url
      * */
     private void registerUser(final String name, final String email,
-                              final String password) {
+                              final String password, final String Location, final String birthDate
+            , final String Gender, final String Biography, final String UserImage) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
 
@@ -147,21 +165,28 @@ public class MainActivity extends AppCompatActivity {
                         // Now store the user in sqlite
                         String uid = jObj.getString("uid");
 
-                        JSONObject user = jObj.getJSONObject("user");
+                        JSONObject user = jObj.getJSONObject("user");  //// Biography birthDate Gender Location UserImage
                         String name = user.getString("name");
                         String email = user.getString("email");
+                        String location = user.getString("Location");
+                        String biography = user.getString("Biography");
+                        String userimage = user.getString("UserImage");
+                        String gender = user.getString("Gender");
+                        String birthdate = user.getString("birthDate");
                         String created_at = user
                                 .getString("created_at");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email,Password.getText().toString(),uid,location,biography,gender,userimage,birthdate, created_at);
 
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "User successfully registered!", Toast.LENGTH_LONG).show();
 
+                        session.setLogin(true);
                         // Launch login activity
+
                         Intent intent = new Intent(
                                 MainActivity.this,
-                                LoginActivity.class);
+                                HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
@@ -195,6 +220,11 @@ public class MainActivity extends AppCompatActivity {
                 params.put("name", name);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("Location", Location);
+                params.put("birthDate", birthDate);
+                params.put("Gender", Gender);
+                params.put("Biography", Biography);
+                params.put("UserImage", UserImage);
 
                 return params;
             }
@@ -215,4 +245,26 @@ public class MainActivity extends AppCompatActivity {
             pDialog.dismiss();
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+            Intent i = new Intent(getApplicationContext(),
+                    LoginActivity.class);
+            startActivity(i);
+            finish();
+
+    }
 }

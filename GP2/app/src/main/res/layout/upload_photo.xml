@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:background="@drawable/dialogs">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtchoose"
+        android:textSize="18dp"
+        android:text="Choose Photo"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:clickable="true"
+
+
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtupload"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:text="Upload Photo"
+        android:layout_marginLeft="10dp"
+        android:clickable="true"
+        android:layout_below="@+id/txtchoose"
+        android:layout_marginTop="10dp"/>
+
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="190dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/txtupload"
+        android:id="@+id/ppimage" />
+
+
+
+</RelativeLayout>
+</LinearLayout>

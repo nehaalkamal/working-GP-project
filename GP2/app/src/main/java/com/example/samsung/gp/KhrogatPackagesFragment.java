@@ -44,6 +44,8 @@ public class KhrogatPackagesFragment extends Fragment {
     public boolean HasOthers = false;
     public boolean HasAhwa = false;
 
+    public static  ArrayList<KhrogaPackage> favouritesList = new ArrayList<>(); //not used?
+
     public KhrogatPackagesFragment() {
     }
 
@@ -378,6 +380,15 @@ if (intent != null) {
                 }
                 if(KL.size()!= 0) {
                     KP.setKhrogaPackage(KL);
+                    //KARIM 17/6/2016
+                    int tempPrice=0;
+                    for (KhrogaItem oneItem:KL) {
+                        tempPrice+=Integer.parseInt(oneItem.getPrice());
+
+                    }
+                    KP.setPrice(""+tempPrice);
+
+                    // 3shan el ordering 3mlt kda//end of karim's raz3
                     last.add(KP);
                     SummtionBudget = 0;
                 }
@@ -432,14 +443,23 @@ if (intent != null) {
             last.add(KP4);
             last.add(KP5);
 */
-            Collections.shuffle(last);
+           //Collections.shuffle(last);
+            Collections.sort(last);
+
+
+
+
+
             packagesAdapter = new PackagesAdapter(getActivity(), last);
             packagesGridView = (GridView) rootView.findViewById(R.id.GridView_Packages);
             packagesGridView.setAdapter(packagesAdapter);
 
         }
 
-  }
+
+
+
+}
 
 
         packagesGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -460,7 +480,7 @@ if (intent != null) {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "\n\n");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, selectedPackage.toString());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, selectedPackage.shareThatPackage());
                 startActivity(Intent.createChooser(sharingIntent, "Share khoroga"));
 
                 //  view.getBackground().setColorFilter(Color.CYAN, PorterDuff.Mode.DARKEN);
@@ -470,17 +490,14 @@ if (intent != null) {
         });
 
 
-
-
-
-
         return rootView;
     }
 
-    private void showDialogue(final ArrayList<KhrogaItem> selectedPackage) {
+    public void showDialogue(final ArrayList<KhrogaItem> selectedPackage) {
 
 
         list_dialog = new Dialog(getContext());
+
         list_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         list_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         list_dialog.setContentView(R.layout.list_dialog);
@@ -510,5 +527,6 @@ if (intent != null) {
 
         list_dialog.show();
     }
+
 
 }

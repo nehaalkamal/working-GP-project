@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.samsung.gp.Favourites">
+
+
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/profile_user1"
+        android:title="Profile"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/clear_fav"
+        android:icon="@drawable/clear_all"
+        android:title="clear all"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="100"
+        android:title="Logout"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_login"
+        android:title="login"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+</menu>

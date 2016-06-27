@@ -15,7 +15,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3; //5letha 3
 
 	// Database Name
 	private static final String DATABASE_NAME = "android_api";
@@ -27,6 +27,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 	private static final String KEY_ID = "id";
 	private static final String KEY_NAME = "name";
 	private static final String KEY_EMAIL = "email";
+	private static final String KEY_Password = "password";
+	private static final String KEY_Location= "Location";
+	private static final String KEY_Biography = "Biography";
+	private static final String KEY_Gender = "Gender";
+	private static final String KEY_UserImage = "UserImage";
+	private static final String KEY_birthDate = "birthDate";
 	private static final String KEY_UID = "uid";
 	private static final String KEY_CREATED_AT = "created_at";
 
@@ -37,10 +43,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 	// Creating Tables
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+	/*	String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
+				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
+				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"+ " TEXT,"+ KEY_Password + " TEXT,"
+				+ KEY_Location + " TEXT," + KEY_Biography + " TEXT,"
+				+ KEY_Gender + " TEXT," + KEY_UserImage + " TEXT,"
+				+ KEY_birthDate + " TEXT," + KEY_CREATED_AT + " TEXT" + ")";*/ //talet satr ghlt
 		String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
-				+ KEY_CREATED_AT + " TEXT" + ")";
+				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"+ KEY_Password + " TEXT,"
+				+ KEY_Location + " TEXT," + KEY_Biography + " TEXT,"
+				+ KEY_Gender + " TEXT," + KEY_UserImage + " TEXT,"
+				+ KEY_birthDate + " TEXT," + KEY_CREATED_AT + " TEXT" + ")";
 		db.execSQL(CREATE_LOGIN_TABLE);
 
 		Log.d(TAG, "Database tables created");
@@ -59,13 +73,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 	/**
 	 * Storing user details in database
 	 * */
-	public void addUser(String name, String email, String uid, String created_at) {
+	public void addUser(String name, String email,String password, String uid, String Location, String Biography, String Gender, String UserImage, String birthDate, String created_at) { // Biography birthDate Gender Location UserImage
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
 		values.put(KEY_NAME, name); // Name
 		values.put(KEY_EMAIL, email); // Email
-		values.put(KEY_UID, uid); // Email
+		values.put(KEY_Password, password);
+		values.put(KEY_UID, uid);
+		values.put(KEY_Location, Location);
+		values.put(KEY_Biography, Biography);
+		values.put(KEY_Gender, Gender);
+		values.put(KEY_UserImage, UserImage);
+		values.put(KEY_birthDate, birthDate);
 		values.put(KEY_CREATED_AT, created_at); // Created At
 
 		// Inserting Row
@@ -73,6 +93,35 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		db.close(); // Closing database connection
 
 		Log.d(TAG, "New user inserted into sqlite: " + id);
+	}
+
+	public void Updateuser(String name,String password, String Location, String birthDate, String Gender, String Biography ,String email) { // Biography birthDate Gender Location UserImage
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_NAME, name); // Name
+		values.put(KEY_Password, password);
+		values.put(KEY_Location, Location);
+		values.put(KEY_Biography, Biography);
+		values.put(KEY_Gender, Gender);
+		values.put(KEY_birthDate, birthDate);
+		// Inserting Row
+		long id = db.update(TABLE_USER, values, "email=" + "'" + email + "'", null);
+		db.close(); // Closing database connection
+
+		Log.d(TAG, "Update data completed: " + id);
+	}
+
+	public void UpdatePhoto(String email, String UserImage) { // Biography birthDate Gender Location UserImage
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_UserImage, UserImage);
+		// Inserting Row
+		long id = db.update(TABLE_USER, values, "email=" + "'" + email + "'", null);
+		db.close(); // Closing database connection
+
+		Log.d(TAG, "profile photo changed " + id);
 	}
 
 	/**
@@ -89,8 +138,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 		if (cursor.getCount() > 0) {
 			user.put("name", cursor.getString(1));
 			user.put("email", cursor.getString(2));
+			user.put("password", cursor.getString(4));
 			user.put("uid", cursor.getString(3));
-			user.put("created_at", cursor.getString(4));
+			user.put("Location", cursor.getString(5));
+			user.put("Biography", cursor.getString(6));
+			user.put("Gender", cursor.getString(7));
+			user.put("UserImage", cursor.getString(8));
+			user.put("birthDate", cursor.getString(9));
+			user.put("created_at", cursor.getString(10));
 		}
 		cursor.close();
 		db.close();
@@ -99,7 +154,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 		return user;
 	}
-
 	/**
 	 * Re crate database Delete all tables and create them again
 	 * */

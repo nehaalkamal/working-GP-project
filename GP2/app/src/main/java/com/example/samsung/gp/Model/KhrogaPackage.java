@@ -6,14 +6,16 @@ import java.util.ArrayList;
 /**
  * Created by TOSHIBA on 2016-04-07.
  */
-public class KhrogaPackage implements Serializable{
-    String APPNAME="Download YALLA from playstore *InsertAppLinkHere*";
+public class KhrogaPackage implements Serializable ,Comparable<KhrogaPackage>{
+
     private ArrayList<KhrogaItem> KhrogaPackageList;
+    private String ID;
     private String title;
     private String mixImage;
     private String price;
     private String rating;
     private boolean favorited;
+
 
 
     public ArrayList<KhrogaItem> getKhrogaPackage() {
@@ -23,6 +25,16 @@ public class KhrogaPackage implements Serializable{
     public void setKhrogaPackage(ArrayList<KhrogaItem> khrogaPackageList) { // de hb2a static ghlbn lw etl5bt
         KhrogaPackageList = khrogaPackageList;
     }
+
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
 
     public String getTitle() {
         return title;
@@ -64,8 +76,11 @@ public class KhrogaPackage implements Serializable{
         this.favorited = favorited;
     }
 
-    @Override
-    public String toString() {
+
+    public String shareThatPackage() {
+        //// TODO: 2016-06-17 : change this AppName
+        String APPNAME="Download YALLA from playstore *InsertAppPlayStoreLinkHere*";
+
         String strText="Yalla " ;
         for (int i=0 ; i< KhrogaPackageList.size();i++){
 
@@ -80,7 +95,15 @@ public class KhrogaPackage implements Serializable{
 
         return strText;
 
+
     }
 
 
+    @Override
+    public int compareTo(KhrogaPackage another) {
+        int compareQuantity =Integer.parseInt(another.getPrice());
+        //descending order
+        return compareQuantity - Integer.parseInt(this.price);
+
+    }
 }
